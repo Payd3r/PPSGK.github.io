@@ -12,4 +12,5 @@ package dietasmart;
 public class Thread extends Thread {
     //gestione delle informazione e controllo degli articoli in scadenza
     //invio messaggi e avvisi per prodotti
+    
 }

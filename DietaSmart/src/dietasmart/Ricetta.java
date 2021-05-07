@@ -5,6 +5,7 @@
  */
 package dietasmart;
 
+import java.sql.Time;
 import java.util.ArrayList;
 
 /**
@@ -13,33 +14,31 @@ import java.util.ArrayList;
  */
 public class Ricetta {
 
+    String nome;
     ArrayList necessario;
+    String preparazione;
+    Time tempo;
 
     Ricetta() {
-        necessario = new ArrayList<Prodotto>();
+        necessario = new ArrayList<Prodotti>();
     }
 
-    Ricetta(Prodotti a, String preparazione, int tempo) {
-
+    Ricetta(Prodotti a, String preparazione, Time tempo, String nome) {
+        for (int i = 0; i < a.prodotti.size(); i++) {
+            necessario.add(a.GetProduct(i));
+        }
+        this.preparazione = preparazione;
+        this.tempo = tempo;
+        this.nome = nome;
     }
 
-    public Ricetta menoTempo() {
-        //trovare la ricetta piu' velece da fare
-        return new Ricetta();
-    }
-
-    public Ricetta salutare() {
-        //trovare la ricetta piu' salutare da fare
-        return new Ricetta();
-    }
-
-    public Ricetta calorica() {
-        //trovare la ricetta piu' calorica da fare
-        return new Ricetta();
-    }
-
-    public Ricetta facileDaFare() {
-        //trovare la ricetta piu' facileDaFare da fare
-        return new Ricetta();
+    public String visualizzaNecessario() {
+        String s = "";
+        Prodotto p;
+        for (int i = 0; i < necessario.size(); i++) {
+            p = (Prodotto) necessario.get(i);
+            s += p.nome + " - ";
+        }
+        return s;
     }
 }

@@ -13,7 +13,15 @@ import java.util.ArrayList;
  */
 public class Prodotti {
 
+    static Prodotti _instance = null;
     ArrayList prodotti; //https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
+
+    static synchronized public Prodotti getInstance() {
+        if (_instance == null) {
+            _instance = new Prodotti();
+        }
+        return _instance;
+    }
 
     Prodotti() {
         prodotti = new ArrayList<Prodotto>();
@@ -21,6 +29,10 @@ public class Prodotti {
 
     public void AddProduct(Prodotto p) {
         prodotti.add(p);
+    }
+
+    public Prodotto GetProduct(int i) {
+        return (Prodotto) prodotti.get(i);
     }
 
     public boolean removeProduct(Prodotto p) {
@@ -31,10 +43,5 @@ public class Prodotti {
             }
         }
         return false;
-    }
-
-    public boolean partOfProduct(String name, int quantita) {
-        //rimuovere una quantita' di un prodotto
-        return true;
     }
 }
