@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="esempi">
+        <div class="figlio">
+            <!--Lettura-->
+            <h1>Read the file</h1>
+            <textarea id="testoLetto" cols="30" rows="15" readonly></textarea>
+            <button id="leggi" onclick="Read()">Read</button>
+        </div>
+        <div class="figlio">
+            <!--Scrittura-->
+            <h1>Write on file</h1>
+            <textarea id="testoScrivere" cols="30" rows="15"></textarea>
+            <button id="write" onclick="Write()">Write</button>
+        </div>
+        <div class="figlio">
+            <!--Append-->
+            <h1>Append text on file</h1>
+            <textarea id="testoAppend" cols="30" rows="15"></textarea>
+            <button id="append" onclick="Append()">Append</button>
+        </div>
+    </div>
+        <label id="ris"></label>
+    <script src="script.js"></script>
+</body>
+
+</html>
