@@ -1,0 +1,113 @@
+body {
+    border: 0;
+    padding: 0;
+    background-color: rgb(109, 108, 108);
+}
+
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+/*Header*/
+
+.header {
+    overflow: hidden;
+    background-color: #3a3a3a;
+    padding: 20px 10px;
+}
+
+.header a {
+    float: left;
+    color: rgb(206, 206, 206);
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+}
+
+.header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.header a:hover {
+    background-color: rgb(121, 121, 121);
+    color: black;
+}
+
+.header a.active {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.header-right {
+    float: right;
+}
+
+@media screen and (max-width: 500px) {
+    .header a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+    .header-right {
+        float: none;
+    }
+}
+
+/*Sidebar e Tag*/
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial;
+}
+
+/* Style tab links */
+
+.tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 20%;
+}
+
+.tablink:hover {
+    background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+
+.tabcontent {
+    color: white;
+    display: none;
+    padding: 100px 20px;
+    height: 100%;
+}
+
+#AddRicetta {
+    background-color: rgb(100, 100, 100);
+}
+
+#AddArticolo {
+    background-color: rgb(100, 100, 100);
+}
+
+#Ricette {
+    background-color: rgb(100, 100, 100);
+}
+
+#RicetteAtt {
+    background-color: rgb(100, 100, 100);
+}
+
+#Articoli {
+    background-color: rgb(100, 100, 100);
+}
