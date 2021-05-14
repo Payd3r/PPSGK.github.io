@@ -18,6 +18,9 @@ public class Ricetta {
     ArrayList necessario;
     String preparazione;
     Time tempo;
+    int calorie;
+    int proteine;
+    int grassi;
 
     Ricetta() {
         necessario = new ArrayList<Prodotti>();
@@ -32,6 +35,21 @@ public class Ricetta {
         this.nome = nome;
     }
 
+    public int getCalorie() {
+        return calorie;
+    }
+
+    public int getProteine() {
+        return proteine;
+    }
+
+    public int getGrassi() {
+        return grassi;
+    }
+
+    
+    
+    
     public String visualizzaNecessario() {
         String s = "";
         Prodotto p;

@@ -6,18 +6,15 @@
 package dietasmart;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
+
 
 /**
  *
- * @author Payd3r
+ * @author Pellegata_Filippo
  */
-public class DietaSmart {
-
-    public static void main(String[] args) throws FileNotFoundException, IOException {
- 
-    }
-
+public class ThreadLetturaDaFile extends Thread{
+    
+ BufferedReader reader = new BufferedReader(new FileReader("R:\\Desktop\\PPSGK.github.io-main\\PPSGK.github.io-main\\DietaSmart\prova.txt"));
+  
 }
