@@ -15,7 +15,6 @@ public class Prodotto {
 
     public String nome; //pasta
     int[] valoreEnergetico;//[82,9% carboidrati, 13,7% proteine, 3,4% grassi]
-    int idProdotto;
     Time scedenza; //https://docs.oracle.com/javase/7/docs/api/java/sql/Time.html
 
     
@@ -29,7 +28,6 @@ public class Prodotto {
         this.nome = nome;
         this.valoreEnergetico = valoreEnergetico;
         this.scedenza = scedenza;
-        idProdotto++;
     }
     
     
