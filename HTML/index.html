@@ -1,69 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <title>Dispensa Smart</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <!--Header-->
     <div class="header">
-        <a href="#default" class="logo">Dispensa Smart</a>
-        <div class="header-right">
-            <a class="active" href="#home">Home</a>
-            <a href="https://github.com/Payd3r/PPSGK.github.io">GitHub</a>
-            <a href="#about">About</a>
-        </div>
+      <a href="#default" class="logo">Dispensa Smart</a>
+      <div class="header-right">
+        <a class="active" href="#home">Home</a>
+        <a href="https://github.com/Payd3r/PPSGK.github.io">GitHub</a>
+        <a href="#about">About</a>
+      </div>
     </div>
     <!--Tab-->
-    <button class="tablink" onclick="openPage('AddRicetta', this, 'rgb(100,100,100)')">Aggiungi Ricetta</button>
-    <button class="tablink" onclick="openPage('AddArticolo', this, 'rgb(100,100,100)')" id="defaultOpen">Aggiungi
-        Articolo</button>
-    <button class="tablink" onclick="openPage('Ricette', this, 'rgb(100,100,100)')">Ricette</button>
-    <button class="tablink" onclick="openPage('RicetteAtt', this, 'rgb(100,100,100)')">Ricette Attive</button>
-    <button class="tablink" onclick="openPage('Articoli', this, 'rgb(100,100,100)')">Articoli</button>
+    <button
+      class="tablink"
+      onclick="openPage('AddRicetta', this, 'rgb(100,100,100)')"
+    >
+      Aggiungi Ricetta
+    </button>
+    <button
+      class="tablink"
+      onclick="openPage('AddArticolo', this, 'rgb(100,100,100)')"
+      id="defaultOpen"
+    >
+      Aggiungi Articolo
+    </button>
+    <button
+      class="tablink"
+      onclick="openPage('Ricette', this, 'rgb(100,100,100)')"
+    >
+      Ricette
+    </button>
+    <button
+      class="tablink"
+      onclick="openPage('RicetteAtt', this, 'rgb(100,100,100)')"
+    >
+      Ricette Attive
+    </button>
+    <button
+      class="tablink"
+      onclick="openPage('Articoli', this, 'rgb(100,100,100)')"
+    >
+      Articoli
+    </button>
 
     <div id="contenitore-vue">
+      <div id="AddRicetta" class="tabcontent">
+        <h3 class="NuovaRicetta">Aggiungi una nuova ricetta</h3>
+        <label for="">Nome Ricetta</label>
+        <input type="text" name="" id="NuovaRicetta" class="AttributoArticolo" />
+        <br />
+        <label for="">Preparazione</label>
+        <input type="text" name="" id="NuovaRicetta" class="AttributoArticolo" />
+        <br />
+        <label for="">Tempo di Preparazione</label>
+        <input type="text" name="" id="NuovaRicetta" class="AttributoArticolo" />
+        <br />
+        <label for="">Calorie</label>
+        <input type="text" name="" id="NuovaRicetta" class="AttributoArticolo" />
+        <br />
+        <label for="">Proteine</label>
+        <input type="text" name="" id="NuovaRicetta" class="AttributoArticolo" />
+        <br />
+        <label for="">Grassi</label>
+        <input type="text" name="" id="NuovaRicetta" class="AttributoArticolo" />
+        <br />
+        <label for="">Ingredienti</label>
+        <input type="text" name="" id="NuovaRicetta" class="AttributoArticolo" />
+        <br />
+        <input type="button" value="Aggiungi Ricetta" class="AttributoArticolo" />
+      </div>
 
-        <div id="AddRicetta" class="tabcontent">
-            <h3>Aggiungi una nuova ricetta</h3>
+      <div id="AddArticolo" class="tabcontent">
+        <h3>Aggiungi un nuovo articolo</h3>
+        <label for="">Nome Articolo</label>
+        <input type="text" name="" id="NuovaRicetta" class="AttributoArticolo" />
+        <br />
+        <label for="">Calorie</label>
+        <input type="text" name="" id="NuovaRicetta" class="AttributoArticolo" />
+        <br />
+        <label for="">Proteine</label>
+        <input type="text" name="" id="NuovaRicetta" class="AttributoArticolo" />
+        <br />
+        <label for="">Grassi</label>
+        <input type="text" name="" id="NuovaRicetta" class="AttributoArticolo" />
+        <br />
+        <label for="">Data di scadenza</label>
+        <input type="date" name="" id="NuovaRicetta" class="AttributoArticolo" />
+        <br />
+        <input type="button" value="Aggiungi Ricetta" class="AttributoArticolo">
+      </div>
 
+      <div id="Ricette" class="tabcontent">
+        <h3>Tutte le ricette conosciute</h3>
+      </div>
 
-        </div>
+      <div id="RicetteAtt" class="tabcontent">
+        <h3>Ricette realizzabili</h3>
+      </div>
 
-        <div id="AddArticolo" class="tabcontent">
-            <h3>Aggiungi un nuovo articolo</h3>
-
-        </div>
-
-        <div id="Ricette" class="tabcontent">
-            <h3>Tutte le ricette conosciute</h3>
-
-        </div>
-
-        <div id="RicetteAtt" class="tabcontent">
-            <h3>Ricette realizzabili</h3>
-
-        </div>
-
-        <div id="Articoli" class="tabcontent">
-            <h3>Articoli in dispensa</h3>
-
-        </div>
-
+      <div id="Articoli" class="tabcontent">
+        <h3>Articoli in dispensa</h3>
+      </div>
     </div>
     <script src="script.js"></script>
     <script src="Articolo.js"></script>
     <script src="Articoli.js"></script>
     <script src="Ricetta.js"></script>
     <script src="Ricette.js"></script>
-</body>
-
+  </body>
 </html>

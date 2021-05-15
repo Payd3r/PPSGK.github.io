@@ -1,7 +1,7 @@
 class Articolo {
     constructor(s) {
-        this.nome = s[0];
-        this.preparazione = s[1].split(",");
+        this.nome = s.split(":")[0];
+        this.valoreEnergetico = s[1].split(",");
         this.tempo = new Date(s[2].split("/")[0], s[2].split("/")[1], s[2].split("/")[3]);
     }
 }
