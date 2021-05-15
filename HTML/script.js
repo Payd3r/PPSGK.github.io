@@ -59,9 +59,9 @@ var app = new Vue(
     {
         el: '#contenitore-vue',
         data: {
-            Ricette: getRicette("D:\File\  Scuola\Superiori\      4°superiore\GitHub\PPSGK\SharedFiles\Ricette.txt"),
-            Articoli: getArticoli("D:\File\  Scuola\Superiori\      4°superiore\GitHub\PPSGK\SharedFiles\Articoli.txt"),
-            RicetteTot: getRicette("D:\File\  Scuola\Superiori\      4°superiore\GitHub\PPSGK\SharedFiles\RicetteTot.txt"),
+            Ricette: new Ricette("D:\File\  Scuola\Superiori\      4°superiore\GitHub\PPSGK\SharedFiles\Ricette.txt"),
+            Articoli: new Articoli("D:\File\  Scuola\Superiori\      4°superiore\GitHub\PPSGK\SharedFiles\Articoli.txt"),
+            RicetteTot: new Ricette("D:\File\  Scuola\Superiori\      4°superiore\GitHub\PPSGK\SharedFiles\RicetteTot.txt"),
         },
         methods: {
 
