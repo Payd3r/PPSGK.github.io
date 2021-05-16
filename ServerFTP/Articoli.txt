@@ -1,0 +1,4 @@
+bistecca:45,25,30:5/06/2021;https://images-na.ssl-images-amazon.com/images/I/71eElv4qLmL._AC_SY450_.jpg
+burro:10,0,90:10/12/2022;https://www.bbuono.it/wp-content/uploads/2018/09/burro-malga-bagolino-alpeggio.jpg
+pasta:40,20,40:10/10/2021;https://www.blogsrl.it/wp-content/uploads/2019/07/penne-rigate-1.jpg
+olio:10,5,85:10/12/2022;https://uploads.nonsprecare.it/wp-content/uploads/2018/11/benefici-olio-extravergine-oliva-proprieta-salute-3.jpg

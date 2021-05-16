@@ -7,4 +7,4 @@ class Articolo {
     }
 }
 //pasta:40,20,40:10/10/2021
-//nome;valoreEnergetico;scadenza
+//nome;valoreEnergetico;scadenza;img

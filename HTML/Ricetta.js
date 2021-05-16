@@ -18,5 +18,5 @@ class Ricetta {
         return vett;
     }
 }
-//nome;preparazione;tempo;calorie;proteine;grassi;articoli \n
+//nome;preparazione;tempo;calorie;proteine;grassi;articoli;img \n
 //Bistecca;Cucinare la bistecca in padella con del burro;10;1000;313;69;bistecca:45,25,30:5/06/2021&burro:10,0,90:10/12/2022
