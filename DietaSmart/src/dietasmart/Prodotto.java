@@ -30,7 +30,15 @@ public class Prodotto {
         this.scedenza = scedenza;
     }
     
-    
+    public String valoreEnergetico(){
+        String str="";
+       
+            
+           str=valoreEnergetico.toString();
+        
+        return str;
+    }
+
     
     
 }

@@ -55,8 +55,15 @@ Ricetta ricetta;
     }
 
     public String visualizzaDisponibili() {
-
+        Ricetta temp;
         String str = "";
+        for (int i = 0; i < ricette.size(); i++) {
+            temp=(Ricetta)ricette.get(i);
+            if(controllaDisponibilita(temp)==true){
+                str+=temp.nome;
+            }
+        }
+        
         return str;
     }
 
@@ -72,7 +79,7 @@ Ricetta ricetta;
         return s;
     }
     
-    public String TrovaIndiceRicettaCalorica(){
+    public String TrovaRicettaCalorica(){
     String str="";
     Ricetta temp1,temp2;
     Ricetta trovata=new Ricetta();
@@ -96,7 +103,7 @@ Ricetta ricetta;
     return str;
     
 }
-    public String TrovaIndiceRicettaProteica(){
+    public String TrovaRicettaProteica(){
     
     String str="";
     Ricetta temp1,temp2;
@@ -123,7 +130,7 @@ Ricetta ricetta;
 }
     
     
-        public String TrovaIndiceRicettaSalutare(){
+ public String TrovaRicettaSalutare(){
             String str="";
     Ricetta temp1,temp2;
     Ricetta trovata=new Ricetta();
@@ -143,5 +150,29 @@ Ricetta ricetta;
     str=trovata.nome;
     return str;
    
-}
+        }
+        
+  public String TrovaRicettaFacile(){
+            String str="";
+    Ricetta temp1,temp2;
+    Ricetta trovata=new Ricetta();
+        for (int i = 0; i < ricette.size()-1; i++) {
+            for (int j = 0; j < ricette.size(); j++) {
+                
+                temp1=(Ricetta)ricette.get(i);
+                temp2=(Ricetta)ricette.get(j);
+                
+                if(temp1.difficolta<temp2.difficolta){
+                    trovata=temp1;
+                }else{
+                    trovata=temp2;
+                }
+        }
+        }
+    str=trovata.nome;
+    return str;
+   
+        }
+        
+        
 }

@@ -21,18 +21,26 @@ public class Ricetta {
     int calorie;
     int proteine;
     int grassi;
+    int difficolta;
 
     Ricetta() {
         necessario = new ArrayList<Prodotti>();
     }
 
-    Ricetta(Prodotti a, String preparazione, Time tempo, String nome) {
+    Ricetta(Prodotti a, String preparazione, Time tempo, String nome,int difficolta) {
+        Prodotto p;
         for (int i = 0; i < a.prodotti.size(); i++) {
             necessario.add(a.GetProduct(i));
+            p=(Prodotto) a.prodotti.get(i);
+            this.calorie+=p.valoreEnergetico[0];
+            this.proteine+=p.valoreEnergetico[1];
+            this.grassi+=p.valoreEnergetico[2];
         }
         this.preparazione = preparazione;
         this.tempo = tempo;
         this.nome = nome;
+        this.difficolta=difficolta;
+        
     }
 
     public int getCalorie() {
@@ -45,6 +53,10 @@ public class Ricetta {
 
     public int getGrassi() {
         return grassi;
+    }
+
+    public int getDifficolta() {
+        return difficolta;
     }
 
     
