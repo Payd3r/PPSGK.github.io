@@ -29,7 +29,7 @@ var app = new Vue(
     {
         el: '#contenitore-vue',
         data: {
-            Ricette: getFromFile(true, "D:\File\  Scuola\Superiori\      4°superiore\GitHub\PPSGK\SharedFiles\Ricette.txt");
+            Ricette: getFromFile(true, "D:\File\  Scuola\Superiori\      4°superiore\GitHub\PPSGK\SharedFiles\Ricette.txt"),
             Articoli: getFromFile(false, "D:\File\  Scuola\Superiori\      4°superiore\GitHub\PPSGK\SharedFiles\Articoli.txt"),
             RicetteTot: getFromFile(true, "D:\File\  Scuola\Superiori\      4°superiore\GitHub\PPSGK\SharedFiles\RicetteTot.txt"),
         },
