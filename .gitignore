@@ -4,3 +4,8 @@
 /Prova/build/
 DietaSmart/build.xml
 DietaSmart/manifest.mf
+/.Example/Java/build/
+/.Example/Java/nbproject/private/
+/Java/build/
+/Java/nbproject/private/
+/DietaSmart/build/

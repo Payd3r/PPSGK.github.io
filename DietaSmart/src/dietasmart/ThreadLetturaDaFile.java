@@ -5,22 +5,10 @@
  */
 package dietasmart;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-
 /**
  *
  * @author Pellegata_Filippo
  */
-public class ThreadLetturaDaFile extends Thread{
-    
- 
+public class ThreadLetturaDaFile extends Thread {
+
 }
