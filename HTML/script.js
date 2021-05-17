@@ -21,33 +21,31 @@ function openPage(pageName, elmnt, color) {
 
     // Add the specific color to the button used to open the tab content
     elmnt.style.backgroundColor = color;
-}
-
-
+};
+function getFromFile(tipo, s) {
+    var temp;
+    var file = p.GetFile(s);
+    var streamReader = file.OpenAsTextStream(1);
+    let i = 0;
+    while (!streamReader.AtEndOfStream) {
+        if (!tipo)
+            temp[i] = new Articolo(streamReader.ReadLine());
+        else
+            temp[i] = new Ricetta(streamReader.ReadLine());
+        i++;
+    }
+    return temp;
+};
 
 var app = new Vue(
     {
         el: '#contenitore-vue',
         data: {
-            Ricette: getFromFile(true, "D:\File\  Scuola\Superiori\      4°superiore\GitHub\PPSGK\SharedFiles\Ricette.txt"),
-            Articoli: getFromFile(false, "D:\File\  Scuola\Superiori\      4°superiore\GitHub\PPSGK\SharedFiles\Articoli.txt"),
-            RicetteTot: getFromFile(true, "D:\File\  Scuola\Superiori\      4°superiore\GitHub\PPSGK\SharedFiles\RicetteTot.txt"),
+            Ricette: getFromFile(true, "D:\\File\\  Scuola\\Superiori\\      4°superiore\\GitHub\\PPSGK\\SharedFiles\\Ricette.txt"),
+            Articoli: getFromFile(false, "D:\\File\\  Scuola\\Superiori\\      4°superiore\\GitHub\\PPSGK\\SharedFiles\\Articoli.txt"),
+            RicetteTot: getFromFile(true, "D:\\File\\  Scuola\\Superiori\\      4°superiore\\GitHub\\PPSGK\\SharedFiles\\RicetteTot.txt"),
         },
         methods: {
-            getFromFile(tipo, s) {
-                var temp;
-                var file = p.GetFile(s);
-                var streamReader = file.OpenAsTextStream(1);
-                let i = 0;
-                while (!streamReader.AtEndOfStream) {
-                    if (!tipo)
-                        temp[i] = new Articolo(streamReader.ReadLine());
-                    else
-                        temp[i] = new Ricetta(streamReader.ReadLine());
-                    i++;
-                }
-                return temp;
-            },
             writeOnFile(tipo) {
                 if (tipo) {
                     //aggiungi articolo
@@ -63,5 +61,4 @@ var app = new Vue(
                 }
             }
         }
-    }
-);
+    });
