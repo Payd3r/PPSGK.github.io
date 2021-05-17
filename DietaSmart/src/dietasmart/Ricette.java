@@ -79,7 +79,7 @@ public class Ricette {
 
         return s;
     }
-
+*/
     public String TrovaRicettaCalorica() {
         String str = "";
         Ricetta temp1, temp2;
@@ -90,7 +90,7 @@ public class Ricette {
                 temp1 = (Ricetta) ricette.get(i);
                 temp2 = (Ricetta) ricette.get(j);
 
-                if (temp1.calorie > temp2.calorie) {
+                if (temp1.valoreEnergetico[0] > temp2.valoreEnergetico[0]) {
                     trovata = temp1;
                 } else {
                     trovata = temp2;
@@ -104,7 +104,7 @@ public class Ricette {
         return str;
 
     }
-
+/*
     public String TrovaRicettaProteica() {
 
         String str = "";
