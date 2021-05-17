@@ -34,19 +34,19 @@ public class Ricette {
         }
     }
 
-    /*
+    
     public boolean controllaDisponibilita(Ricetta r) {
-        Prodotto p;
+        Ricetta p;
         boolean check = false;
-       for (int i = 0; i < r.necessario.size() && !check; i++) {
-            p = (Prodotto) r.necessario.get(i);
-            if (Prodotti.getInstance().GetProduct(i).equals(p)) {
+       for (int i = 0; i < ricette.size() && !check; i++) {
+            p = (Ricetta) ricette.get(i);
+            if (Prodotti.getInstance().GetProduct(i).equals(p.nome)) {
                 check = true;
             }
         }
         return check;
     }
-
+/*
     public void usaRicetta(Ricetta r) {
         Prodotto p;
         for (int i = 0; i < r.necessario.size(); i++) {
@@ -54,7 +54,7 @@ public class Ricette {
             Prodotti.getInstance().removeProduct(p);
         }
     }
-    
+    */
     public String visualizzaDisponibili() {
         Ricetta temp;
         String str = "";
@@ -67,7 +67,7 @@ public class Ricette {
 
         return str;
     }
-
+/*
     public String visualizza() {
         String s = "";
         Ricetta r;
@@ -104,7 +104,7 @@ public class Ricette {
         return str;
 
     }
-/*
+
     public String TrovaRicettaProteica() {
 
         String str = "";
@@ -116,7 +116,7 @@ public class Ricette {
                 temp1 = (Ricetta) ricette.get(i);
                 temp2 = (Ricetta) ricette.get(j);
 
-                if (temp1.proteine > temp2.proteine) {
+                if (temp1.valoreEnergetico[1] > temp2.valoreEnergetico[1]) {
                     trovata = temp1;
                 } else {
                     trovata = temp2;
@@ -141,7 +141,7 @@ public class Ricette {
                 temp1 = (Ricetta) ricette.get(i);
                 temp2 = (Ricetta) ricette.get(j);
 
-                if (temp1.grassi < temp2.grassi) {
+                if (temp1.valoreEnergetico[2] < temp2.valoreEnergetico[2]) {
                     trovata = temp1;
                 } else {
                     trovata = temp2;
@@ -174,5 +174,5 @@ public class Ricette {
         return str;
 
     }
-     */
+     
 }
