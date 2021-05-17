@@ -12,6 +12,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -495,26 +496,34 @@ public class Frame extends javax.swing.JFrame {
         DefaultTableModel model1;
         model1 = (DefaultTableModel) jTable2.getModel();
         model1.setRowCount(0);
-        model1.insertRow(model1.getRowCount(), new Object[]{"Bistecca", "Piasta la bistecca", "5 min", "700", "190", "80", "bistecca,burro,sale"});
+        for (Ricetta r : s) {
+            model1.insertRow(model1.getRowCount(), new Object[]{r.nome, r.preparazione, r.tempo, r.valoreEnergetico[0], r.valoreEnergetico[1], r.valoreEnergetico[2], r.necessario});
+        }
     }//GEN-LAST:event_jPanel4ComponentShown
 
     private void jPanel3ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel3ComponentShown
         // TODO add your handling code here:
+        ArrayList<Ricetta> s = new ArrayList<Ricetta>();
+        s = LeggiDaFileRicette("Ricette.txt");
+        s = s.ricetteRealizzabili();
         DefaultTableModel model;
         model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-        model.insertRow(model.getRowCount(), new Object[]{"Pasta in bianco", "Metti la pasta nell'acqua", "10 min", "1000", "79", "180", "pasta,olio,acqua"});
+        for (Ricetta r : s) {
+            model.insertRow(model.getRowCount(), new Object[]{r.nome, r.preparazione, r.tempo, r.valoreEnergetico[0], r.valoreEnergetico[1], r.valoreEnergetico[2], r.necessario});
+        }
     }//GEN-LAST:event_jPanel3ComponentShown
 
     private void AggiungiRicettaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AggiungiRicettaActionPerformed
         // TODO add your handling code here:
         String s = Nome.getText() + ";" + Preparazione.getText() + ";" + Tempo.getText() + ";" + Cal.getText() + ";" + Pro.getText() + ";" + Gra.getText() + ";" + Ingredienti.getText() + ";" + "/n";
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("Ricette.txt"))) {
-            bw.append(s);
-            bw.flush();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Impossibile salvare!");
-        }
+        FileWriter file = new FileWriter("Ricette.txt", true);
+        Scanner testo = new Scanner(System.in);
+        String s = testo.nextLine();
+        BufferedWriter b = new BufferedWriter(file);
+        b.write("\n" + s);
+        b.close();
+        file.close();
         clearRicetta();
     }//GEN-LAST:event_AggiungiRicettaActionPerformed
 
@@ -601,12 +610,7 @@ public class Frame extends javax.swing.JFrame {
     private ArrayList<Ricetta> LeggiDaFileRicette(String percorso) {
         BufferedReader br = null;
         ArrayList s = new ArrayList<Ricetta>();
-        try {
-            br = new BufferedReader(new FileReader(percorso));
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "File " + percorso + " non trovato!");
-        }
+
         String text = null;
         try {
             String[] a;
