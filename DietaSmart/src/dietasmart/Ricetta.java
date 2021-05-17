@@ -17,6 +17,7 @@ public class Ricetta {
     String tempo;
     int[] valoreEnergetico;//[82,9% carboidrati, 13,7% proteine, 3,4% grassi]
     String necessario;
+    int difficolta;
 
     Ricetta() {
         this.nome = "";
