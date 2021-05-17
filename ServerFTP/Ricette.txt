@@ -1,0 +1,2 @@
+Pasta;Cucinare la pasta nell'acquae e condirla con l'olio;10;1000;313;69;pasta:40,20,40:10/10/2021&olio:10,5,85:10/12/2022;https://www.ricettasprint.it/wp-content/uploads/2020/01/La-pasta-in-bianco-fa-ingrassare-_-Tutta-la-verit%C3%A0-sul-piatto-dietetico-ricettasprint.jpg
+Bistecca;Cucinare la bistecca in padella con del burro;10;1000;313;69;bistecca:45,25,30:5/06/2021&burro:10,0,90:10/12/2022;https://www.profumodibasilico.it/wp-content/uploads/2017/06/1600X1000_IMGP8994-Bistecca-perfetta.jpg

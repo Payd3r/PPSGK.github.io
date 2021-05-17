@@ -21,50 +21,45 @@ function openPage(pageName, elmnt, color) {
 
     // Add the specific color to the button used to open the tab content
     elmnt.style.backgroundColor = color;
-}
-function getRicette(s) {
+};
+function getFromFile(tipo, s) {
     var temp;
     var file = p.GetFile(s);
     var streamReader = file.OpenAsTextStream(1);
     let i = 0;
     while (!streamReader.AtEndOfStream) {
-        temp[i] = getRicetta(streamReader.ReadLine());
+        if (!tipo)
+            temp[i] = new Articolo(streamReader.ReadLine());
+        else
+            temp[i] = new Ricetta(streamReader.ReadLine());
         i++;
     }
     return temp;
-}
-function getArticoli(s) {
-    var temp;
-    var file = p.GetFile(s);
-    var streamReader = file.OpenAsTextStream(1);
-    let i = 0;
-    while (!streamReader.AtEndOfStream) {
-        temp[i] = getArticolo(streamReader.ReadLine());
-        i++;
-    }
-    return temp;
-}
-function getArticolo(s) {
-    var temp;
-    temp = streamReader.ReadLine().Split("&");
-    return temp;
-}
-function getRicetta(s) {
-    var temp;
-    temp = streamReader.ReadLine().Split(";");
-    return temp;
-}
+};
 
 var app = new Vue(
     {
         el: '#contenitore-vue',
         data: {
-            Ricette: new Ricette("D:\File\  Scuola\Superiori\      4°superiore\GitHub\PPSGK\SharedFiles\Ricette.txt"),
-            Articoli: new Articoli("D:\File\  Scuola\Superiori\      4°superiore\GitHub\PPSGK\SharedFiles\Articoli.txt"),
-            RicetteTot: new Ricette("D:\File\  Scuola\Superiori\      4°superiore\GitHub\PPSGK\SharedFiles\RicetteTot.txt"),
+            Ricette: getFromFile(true, "D:\\File\\  Scuola\\Superiori\\      4°superiore\\GitHub\\PPSGK\\SharedFiles\\Ricette.txt"),
+            Articoli: getFromFile(false, "D:\\File\\  Scuola\\Superiori\\      4°superiore\\GitHub\\PPSGK\\SharedFiles\\Articoli.txt"),
+            RicetteTot: getFromFile(true, "D:\\File\\  Scuola\\Superiori\\      4°superiore\\GitHub\\PPSGK\\SharedFiles\\RicetteTot.txt"),
         },
         methods: {
-
+            writeOnFile(tipo) {
+                if (tipo) {
+                    //aggiungi articolo
+                    //prendo le info e le metto in una stringa
+                    //stampo nel txt comandi il numero dell'operazione da eseguire
+                    //a capo stampo l'articolo
+                }
+                else {
+                    //aggiungi ricetta
+                    //prendo le info e le metto in una stringa
+                    //stampo nel txt comandi il numero dell'operazione da eseguire
+                    //a capo stampo la ricetta
+                }
+            }
         }
     }
 );
