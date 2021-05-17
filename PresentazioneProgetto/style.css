@@ -1,0 +1,19 @@
+.titolo{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Farro', sans-serif;
+    /* color: white; */
+}
+.collapse {
+   font-size: 20px;
+    /* color:white;  */
+}
+.bottone{
+    background-color: #ffffff;
+    opacity: .4;
+    margin-left: 10px;
+}
+.NomeElenco{
+    font-size: 18px;
+}
