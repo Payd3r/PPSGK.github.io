@@ -7,7 +7,6 @@ package dietasmart;
 
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.io.*;
-import java.lang.ProcessHandle.Info;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -86,7 +85,6 @@ public class Frame extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
-        jPanel6 = new javax.swing.JPanel();
 
         jButton2.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         jButton2.setText("Conferma");
@@ -280,7 +278,7 @@ public class Frame extends javax.swing.JFrame {
                             .addComponent(Nome, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
                             .addComponent(Preparazione)))
                     .addComponent(AggiungiRicetta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(680, Short.MAX_VALUE))
+                .addContainerGap(673, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,7 +349,7 @@ public class Frame extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1134, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1123, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -394,7 +392,7 @@ public class Frame extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1134, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1123, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -437,7 +435,7 @@ public class Frame extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1134, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1123, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -449,19 +447,6 @@ public class Frame extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Visualizza Articoli", jPanel5);
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1146, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("", jPanel6);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -519,6 +504,9 @@ public class Frame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jPanel3ComponentShown
 
+    
+    
+    
     private void AggiungiRicettaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AggiungiRicettaActionPerformed
         // TODO add your handling code here:
         String s = Nome.getText() + ";" + Preparazione.getText()+ ";" + Tempo.getText()+ ";" + Cal.getText()+ ";" + Pro.getText()+";"+ Gra.getText()+ ";" + Ingredienti.getText() + ";"+"\n";
@@ -534,7 +522,7 @@ public class Frame extends javax.swing.JFrame {
         // TODO add your handling code here:
         SimpleDateFormat dcn = new SimpleDateFormat("dd/MM/yyyy");
         String date = dcn.format(Data.getDate());
-        String s = NomeArticolo.getText() + ";" + Calorie.getText() + ";" + Proteine.getText() + ";" + Grassi.getText() + ";" + date + "\n";
+        String s = NomeArticolo.getText() + ";" + Calorie.getText() + ";" + Proteine.getText() + ";" + Grassi.getText() + ";" + date + ";"+ "\n";
         try {
             scriviarticolo(s);
         } catch (IOException ex) {
@@ -617,11 +605,13 @@ public class Frame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "File " + percorso + " non trovato!");
         }
         String text = null;
+        
         try {
             String[] a;
             while ((text = br.readLine()) != null) {
                 a = text.split(";");
                 s.add(new Prodotto(a[0], a[1], a[2], a[3], a[4]));
+                
             }
         } catch (IOException ex) {
             Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
@@ -713,7 +703,6 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
