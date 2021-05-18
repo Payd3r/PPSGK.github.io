@@ -7,6 +7,11 @@ package dietasmart;
 
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.io.*;
+import java.lang.ProcessHandle.Info;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -134,7 +139,7 @@ public class Frame extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(210, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(483, 483, 483))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -275,7 +280,7 @@ public class Frame extends javax.swing.JFrame {
                             .addComponent(Nome, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
                             .addComponent(Preparazione)))
                     .addComponent(AggiungiRicetta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(612, Short.MAX_VALUE))
+                .addContainerGap(680, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -346,7 +351,7 @@ public class Frame extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1066, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1134, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -389,7 +394,7 @@ public class Frame extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1066, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1134, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -432,7 +437,7 @@ public class Frame extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1066, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1134, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -449,7 +454,7 @@ public class Frame extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1078, Short.MAX_VALUE)
+            .addGap(0, 1146, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -462,7 +467,7 @@ public class Frame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1148, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -505,7 +510,7 @@ public class Frame extends javax.swing.JFrame {
         // TODO add your handling code here:
         ArrayList<Ricetta> s = new ArrayList<Ricetta>();
         s = LeggiDaFileRicette("Ricette.txt");
-        s = s.ricetteRealizzabili();
+        //s = s.ricetteRealizzabili();
         DefaultTableModel model;
         model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
@@ -516,14 +521,12 @@ public class Frame extends javax.swing.JFrame {
 
     private void AggiungiRicettaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AggiungiRicettaActionPerformed
         // TODO add your handling code here:
-        String s = Nome.getText() + ";" + Preparazione.getText() + ";" + Tempo.getText() + ";" + Cal.getText() + ";" + Pro.getText() + ";" + Gra.getText() + ";" + Ingredienti.getText() + ";" + "/n";
-        FileWriter file = new FileWriter("Ricette.txt", true);
-        Scanner testo = new Scanner(System.in);
-        String s = testo.nextLine();
-        BufferedWriter b = new BufferedWriter(file);
-        b.write("\n" + s);
-        b.close();
-        file.close();
+        String s = Nome.getText() + ";" + Preparazione.getText()+ ";" + Tempo.getText()+ ";" + Cal.getText()+ ";" + Pro.getText()+";"+ Gra.getText()+ ";" + Ingredienti.getText() + ";"+"\n";
+        try {
+            scriviricette(s);
+        } catch (IOException ex) {
+            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         clearRicetta();
     }//GEN-LAST:event_AggiungiRicettaActionPerformed
 
@@ -532,15 +535,42 @@ public class Frame extends javax.swing.JFrame {
         SimpleDateFormat dcn = new SimpleDateFormat("dd/MM/yyyy");
         String date = dcn.format(Data.getDate());
         String s = NomeArticolo.getText() + ";" + Calorie.getText() + ";" + Proteine.getText() + ";" + Grassi.getText() + ";" + date + "\n";
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("Articoli.txt"))) {
-            bw.append(s);
-            bw.flush();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Impossibile salvare!");
+        try {
+            scriviarticolo(s);
+        } catch (IOException ex) {
+            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
         }
         clearArticolo();
     }//GEN-LAST:event_AggiungiProdottoActionPerformed
 
+    
+    
+        private void scriviricette(String s) throws IOException{
+        File f = new File("Ricette.txt");
+        if (f.exists()) {
+            FileOutputStream fos = new FileOutputStream("Ricette.txt", true);
+            PrintWriter scrivi = new PrintWriter(fos);
+            scrivi.append(s);
+            scrivi.close();
+        } else if (f.createNewFile()) {
+            PrintWriter scrivi = new PrintWriter(f);
+            scrivi.print(s);
+            scrivi.close();           
+        }
+    }
+    private void scriviarticolo(String s) throws IOException{
+        File f = new File("Articoli.txt");
+        if (f.exists()) {
+            FileOutputStream fos = new FileOutputStream("Articoli.txt", true);
+            PrintWriter scrivi = new PrintWriter(fos);
+            scrivi.append(s);
+            scrivi.close();
+        } else if (f.createNewFile()) {
+            PrintWriter scrivi = new PrintWriter(f);
+            scrivi.print(s);
+            scrivi.close();           
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -632,22 +662,22 @@ public class Frame extends javax.swing.JFrame {
     }
 
     private void clearArticolo() {
-        NomeArticolo.setText(" ");
-        Calorie.setText(" ");
-        Proteine.setText(" ");
-        Grassi.setText(" ");
+        NomeArticolo.setText("");
+        Calorie.setText("");
+        Proteine.setText("");
+        Grassi.setText("");
         Data.setCalendar(null);
     }
 
     private void clearRicetta() {
-        Nome.setText(" ");
-        Preparazione.setText(" ");
-        Tempo.setText(" ");
-        Gra.setText(" ");
-        Cal.setText(" ");
-        Pro.setText(" ");
-        Ingredienti.setText(" ");
-        Ingredienti.setText(" ");
+        Nome.setText("");
+        Preparazione.setText("");
+        Tempo.setText("");
+        Gra.setText("");
+        Cal.setText("");
+        Pro.setText("");
+        Ingredienti.setText("");
+        Ingredienti.setText("");
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AggiungiProdotto;
