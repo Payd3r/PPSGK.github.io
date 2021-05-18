@@ -5,6 +5,10 @@
  */
 package dietasmart;
 
+import org.telegram.telegrambots.ApiContextInitializer;
+import org.telegram.telegrambots.TelegramBotsApi;
+import org.telegram.telegrambots.exceptions.TelegramApiRequestException;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -17,7 +21,12 @@ import java.io.IOException;
 public class DietaSmart {
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
- 
+        ApiContextInitializer.init();
+        TelegramBotsApi api = new TelegramBotsApi();
+        try {
+            api.registerBot(new Bot());
+        } catch (TelegramApiRequestException e) {
+            // gestione errore in registrazione
+        }
     }
-
 }
