@@ -22,17 +22,16 @@ import java.util.logging.Logger;
  * @author Mattia
  */
 public class Controlla extends Thread {
-    
+
     @Override
     public void run() {
-<<<<<<< HEAD
         Arduino arduino = new Arduino();
         arduino.setBaudRate(9600);
         arduino.setPortDescription("COM1");//rivedere porta
-        ArrayList <String> lista=new ArrayList <String>();
+        ArrayList<String> lista = new ArrayList<String>();
         while (true) {
             String s;
-            s = arduino.serialRead();            
+            s = arduino.serialRead();
             if (!"".equals(s)) {
                 FileReader file;
                 try {
@@ -48,8 +47,8 @@ public class Controlla extends Thread {
                     Logger.getLogger(Controlla.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
                     Logger.getLogger(Controlla.class.getName()).log(Level.SEVERE, null, ex);
-                }   
-                
+                }
+
                 //scrivi
                 File f = new File("RicetteRealizzabili.txt");
                 if (f.exists()) {
@@ -57,11 +56,11 @@ public class Controlla extends Thread {
                     try {
                         fos = new FileOutputStream("RicetteRealizzabili.txt", true);
                         PrintWriter scrivi = new PrintWriter(fos);
-                        for(int i=0;i<lista.size();i++){
-                            if(lista.get(i)!=s){
+                        for (int i = 0; i < lista.size(); i++) {
+                            if (lista.get(i) != s) {
                                 scrivi.append(lista.get(i));
                             }
-                        }                        
+                        }
                         scrivi.close();
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(Controlla.class.getName()).log(Level.SEVERE, null, ex);
@@ -82,9 +81,5 @@ public class Controlla extends Thread {
                 }
             }
         }
-=======
-        
->>>>>>> b9607263c9bb449a6e9fe1d672f6fce47fc14ee8
     }
-    }
-
+}

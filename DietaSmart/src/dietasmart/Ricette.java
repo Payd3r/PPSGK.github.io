@@ -27,18 +27,16 @@ public class Ricette {
     public void RimuoviRicetta(Ricetta r) {
         for (int i = 0; i < ricette.size(); i++) {   //passo la ricetta, se nome è uguale la rimuovo
             ricetta = (Ricetta) ricette.get(i);
-
             if (ricetta.nome == r.nome) {
                 ricette.remove(i);
             }
         }
     }
 
-    
     public boolean controllaDisponibilita(Ricetta r) {
         Ricetta p;
         boolean check = false;
-       for (int i = 0; i < ricette.size() && !check; i++) {
+        for (int i = 0; i < ricette.size() && !check; i++) {
             p = (Ricetta) ricette.get(i);
             if (Prodotti.getInstance().GetProduct(i).equals(p.nome)) {
                 check = true;
@@ -46,7 +44,8 @@ public class Ricette {
         }
         return check;
     }
-/*
+
+    /*
     public void usaRicetta(Ricetta r) {
         Prodotto p;
         for (int i = 0; i < r.necessario.size(); i++) {
@@ -54,7 +53,7 @@ public class Ricette {
             Prodotti.getInstance().removeProduct(p);
         }
     }
-    */
+     */
     public String visualizzaDisponibili() {
         Ricetta temp;
         String str = "";
@@ -67,7 +66,8 @@ public class Ricette {
 
         return str;
     }
-/*
+
+    /*
     public String visualizza() {
         String s = "";
         Ricetta r;
@@ -79,56 +79,43 @@ public class Ricette {
 
         return s;
     }
-*/
+     */
     public String TrovaRicettaCalorica() {
         String str = "";
         Ricetta temp1, temp2;
         Ricetta trovata = new Ricetta();
         for (int i = 0; i < ricette.size() - 1; i++) {
             for (int j = 0; j < ricette.size(); j++) {
-
                 temp1 = (Ricetta) ricette.get(i);
                 temp2 = (Ricetta) ricette.get(j);
-
                 if (temp1.valoreEnergetico[0] > temp2.valoreEnergetico[0]) {
                     trovata = temp1;
                 } else {
                     trovata = temp2;
                 }
-
             }
-
         }
-
         str = trovata.nome;
         return str;
-
     }
 
     public String TrovaRicettaProteica() {
-
         String str = "";
         Ricetta temp1, temp2;
         Ricetta trovata = new Ricetta();
         for (int i = 0; i < ricette.size() - 1; i++) {
             for (int j = 0; j < ricette.size(); j++) {
-
                 temp1 = (Ricetta) ricette.get(i);
                 temp2 = (Ricetta) ricette.get(j);
-
                 if (temp1.valoreEnergetico[1] > temp2.valoreEnergetico[1]) {
                     trovata = temp1;
                 } else {
                     trovata = temp2;
                 }
-
             }
-
         }
-
         str = trovata.nome;
         return str;
-
     }
 
     public String TrovaRicettaSalutare() {
@@ -137,10 +124,8 @@ public class Ricette {
         Ricetta trovata = new Ricetta();
         for (int i = 0; i < ricette.size() - 1; i++) {
             for (int j = 0; j < ricette.size(); j++) {
-
                 temp1 = (Ricetta) ricette.get(i);
                 temp2 = (Ricetta) ricette.get(j);
-
                 if (temp1.valoreEnergetico[2] < temp2.valoreEnergetico[2]) {
                     trovata = temp1;
                 } else {
@@ -150,7 +135,6 @@ public class Ricette {
         }
         str = trovata.nome;
         return str;
-
     }
 
     public String TrovaRicettaFacile() {
@@ -159,10 +143,8 @@ public class Ricette {
         Ricetta trovata = new Ricetta();
         for (int i = 0; i < ricette.size() - 1; i++) {
             for (int j = 0; j < ricette.size(); j++) {
-
                 temp1 = (Ricetta) ricette.get(i);
                 temp2 = (Ricetta) ricette.get(j);
-
                 if (temp1.difficolta < temp2.difficolta) {
                     trovata = temp1;
                 } else {
@@ -172,7 +154,5 @@ public class Ricette {
         }
         str = trovata.nome;
         return str;
-
     }
-     
 }
