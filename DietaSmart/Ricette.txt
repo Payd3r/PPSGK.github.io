@@ -1,1 +1,3 @@
-Amatriciana;Scaldare l'acqua buttare la pasta e preparare il pomodoro con la pancetta. Mischiare tutto;20;12;1232;123;pasta,pomodoro,pancetta;/n
+
+A;A;A;A;A;A;A;
+a;a;a;a;a;a;a;
