@@ -95,7 +95,6 @@ public class Ricette {
                 }
             }
         }
-
         return trovata;
     }
 

@@ -37,18 +37,27 @@ public class Ricetta {
     }
 
     Ricetta(String nome, String preparazione, String tempo, String necessario, ArrayList<Prodotto> a) {
+        this.valoreEnergetico = new int[]{0, 0, 0};
         this.nome = nome;
         this.preparazione = preparazione;
         this.tempo = tempo;
+        Boolean esci = false;
         for (Prodotto b : a) {
-            if (b.nome.equals(nome)) {
-                this.valoreEnergetico = b.valoreEnergetico;
+            String temp[] = necessario.split(",");
+            esci = false;
+            for (int i = 0; i < temp.length && !esci; i++) {
+                if (b.nome.equals(temp[i])) {
+                    this.valoreEnergetico[0] += b.valoreEnergetico[0];
+                    this.valoreEnergetico[1] += b.valoreEnergetico[1];
+                    this.valoreEnergetico[2] += b.valoreEnergetico[2];
+                    esci = true;
+                }
             }
         }
         this.necessario = necessario;
     }
 
     String ToString() {
-        return this.nome + ";" + this.preparazione + ";" + this.tempo + ";" + this.valoreEnergetico[0] + ";" + this.valoreEnergetico[1] + ";" + this.valoreEnergetico[2] + this.necessario + "\n";
+        return this.nome + ";" + this.preparazione + ";" + this.tempo + ";" + this.valoreEnergetico[0] + ";" + this.valoreEnergetico[1] + ";" + this.valoreEnergetico[2] + ";" + this.necessario + "\n";
     }
 }

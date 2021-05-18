@@ -1,2 +1,4 @@
 Bruschetta;Mettere il pane nel forno per 5 min. Una volta che il pane e' croccante mettere una fetta di prosciutto sopra al pane;10;123;234;112;pane,prosciutto cotto;
-asdasddas;qweqasd;123;12;12;123;caciotta;
+pasta al ragu;cucinare la psta e mettere il ragu;21;180;24;8;pasta,ragu
+pasta al tonno;cucinare la pasta e mettere il tonno;17;130;25;1;pasta,tonno
+gelato;mettere il gelato nella ciotola;1;290;12;90;gelato
