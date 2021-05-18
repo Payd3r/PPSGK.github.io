@@ -20,6 +20,10 @@ public class Ricette {
         ricette = new ArrayList<Ricetta>();
     }
 
+    Ricette(ArrayList<Ricetta> r) {
+       ricette=r;
+    }
+
     public void setRicetta(Ricetta r) {
         ricette.add(r);
     }
@@ -33,16 +37,32 @@ public class Ricette {
         }
     }
 
-    public boolean controllaDisponibilita(Ricetta r) {
-        Ricetta p;
-        boolean check = false;
-        for (int i = 0; i < ricette.size() && !check; i++) {
-            p = (Ricetta) ricette.get(i);
-            if (Prodotti.getInstance().GetProduct(i).equals(p.nome)) {
-                check = true;
+    
+
+    public ArrayList<Ricetta> trovaRealizzabili(ArrayList<Ricetta> a, ArrayList<Prodotto> b) {
+        int controllo=0;
+        ArrayList<Ricetta> realizzabili = new ArrayList<Ricetta>();
+        String[] x;
+        for (Ricetta tmp : a) {
+            x = tmp.necessario.split(",");
+            for (Prodotto temp : b) {
+                
+                for (int i = 0; i < x.length; i++) {
+                    if (x[0] == temp.nome){
+                        controllo++;
+                    }
+                }
+                
+                
             }
+            if(controllo==x.length){
+                controllo=0;
+                realizzabili.add(tmp);
+            }
+                
+           
         }
-        return check;
+        return realizzabili;
     }
 
     /*
@@ -54,19 +74,7 @@ public class Ricette {
         }
     }
      */
-    public String visualizzaDisponibili() {
-        Ricetta temp;
-        String str = "";
-        for (int i = 0; i < ricette.size(); i++) {
-            temp = (Ricetta) ricette.get(i);
-            if (controllaDisponibilita(temp) == true) {
-                str += temp.nome;
-            }
-        }
-
-        return str;
-    }
-
+    
     /*
     public String visualizza() {
         String s = "";
@@ -80,8 +88,8 @@ public class Ricette {
         return s;
     }
      */
-    public String TrovaRicettaCalorica() {
-        String str = "";
+    public Ricetta TrovaRicettaCalorica() {
+
         Ricetta temp1, temp2;
         Ricetta trovata = new Ricetta();
         for (int i = 0; i < ricette.size() - 1; i++) {
@@ -95,8 +103,8 @@ public class Ricette {
                 }
             }
         }
-        str = trovata.nome;
-        return str;
+
+        return trovata;
     }
 
     public String TrovaRicettaProteica() {

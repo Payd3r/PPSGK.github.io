@@ -23,7 +23,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author Mattia
@@ -493,22 +492,28 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel4ComponentShown
 
     private void jPanel3ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel3ComponentShown
-        // TODO add your handling code here:
-        ArrayList<Ricetta> s = new ArrayList<Ricetta>();
-        s = LeggiDaFileRicette("Ricette.txt");
-        //s = s.ricetteRealizzabili();
+
+       
+        Ricette temp = new Ricette(LeggiDaFileRicette("Ricette.txt"));
+        Ricette realizzabili = null;
+        try {
+            realizzabili = new Ricette(temp.trovaRealizzabili(temp.ricette,LeggiDaFileProdotti("Articoli.txt") ));
+        } catch (ParseException ex) {
+            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         DefaultTableModel model;
         model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-        for (Ricetta r : s) {
+        ArrayList <Ricetta> fantastica=new ArrayList<Ricetta>(realizzabili.ricette);
+        for (Ricetta r:fantastica ) {
             model.insertRow(model.getRowCount(), new Object[]{r.nome, r.preparazione, r.tempo, r.valoreEnergetico[0], r.valoreEnergetico[1], r.valoreEnergetico[2], r.necessario});
         }
     }//GEN-LAST:event_jPanel3ComponentShown
-    
-    
+
+
     private void AggiungiRicettaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AggiungiRicettaActionPerformed
         // TODO add your handling code here:
-        String s = Nome.getText() + ";" + Preparazione.getText()+ ";" + Tempo.getText()+ ";" + Cal.getText()+ ";" + Pro.getText()+";"+ Gra.getText()+ ";" + Ingredienti.getText() + ";"+"\n";
+        String s = Nome.getText() + ";" + Preparazione.getText() + ";" + Tempo.getText() + ";" + Cal.getText() + ";" + Pro.getText() + ";" + Gra.getText() + ";" + Ingredienti.getText() + ";" + "\n";
         try {
             scriviricette(s);
         } catch (IOException ex) {
@@ -521,7 +526,7 @@ public class Frame extends javax.swing.JFrame {
         // TODO add your handling code here:
         SimpleDateFormat dcn = new SimpleDateFormat("dd/MM/yyyy");
         String date = dcn.format(Data.getDate());
-        String s = NomeArticolo.getText() + ";" + Calorie.getText() + ";" + Proteine.getText() + ";" + Grassi.getText() + ";" + date + ";"+ "\n";
+        String s = NomeArticolo.getText() + ";" + Calorie.getText() + ";" + Proteine.getText() + ";" + Grassi.getText() + ";" + date + ";" + "\n";
         try {
             scriviarticolo(s);
         } catch (IOException ex) {
@@ -530,9 +535,7 @@ public class Frame extends javax.swing.JFrame {
         clearArticolo();
     }//GEN-LAST:event_AggiungiProdottoActionPerformed
 
-    
-    
-    private void scriviricette(String s) throws IOException{
+    private void scriviricette(String s) throws IOException {
         File f = new File("Ricette.txt");
         if (f.exists()) {
             FileOutputStream fos = new FileOutputStream("Ricette.txt", true);
@@ -542,10 +545,11 @@ public class Frame extends javax.swing.JFrame {
         } else if (f.createNewFile()) {
             PrintWriter scrivi = new PrintWriter(f);
             scrivi.print(s);
-            scrivi.close();           
+            scrivi.close();
         }
     }
-    private void scriviarticolo(String s) throws IOException{
+
+    private void scriviarticolo(String s) throws IOException {
         File f = new File("Articoli.txt");
         if (f.exists()) {
             FileOutputStream fos = new FileOutputStream("Articoli.txt", true);
@@ -555,21 +559,21 @@ public class Frame extends javax.swing.JFrame {
         } else if (f.createNewFile()) {
             PrintWriter scrivi = new PrintWriter(f);
             scrivi.print(s);
-            scrivi.close();           
+            scrivi.close();
         }
     }
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) throws FileNotFoundException, IOException{
+    public static void main(String args[]) throws FileNotFoundException, IOException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        /* Create and display the form */
-        
-        
+ /* Create and display the form */
+
         //INIZIALIZZAZIONE BOT
         /*ApiContextInitializer.init();
         TelegramBotsApi api = new TelegramBotsApi();
@@ -578,38 +582,36 @@ public class Frame extends javax.swing.JFrame {
         } catch (TelegramApiRequestException e) {
             // gestione errore in registrazione
         }*/
-        
-        Arduino arduino=new Arduino();
-        
-        FileReader file=new FileReader("RicetteRealizzabili.txt");
-        BufferedReader lettore=new BufferedReader(file);
-        String riga=lettore.readLine();
-        while(riga!=null){
-            arduino.serialWrite(riga+";");
-            riga=lettore.readLine();
+        Arduino arduino = new Arduino();
+
+        FileReader file = new FileReader("RicetteRealizzabili.txt");
+        BufferedReader lettore = new BufferedReader(file);
+        String riga = lettore.readLine();
+        while (riga != null) {
+            arduino.serialWrite(riga + ";");
+            riga = lettore.readLine();
         }
         arduino.serialWrite(".");
         file.close();
 
-        
-        Controlla c=new Controlla();
+        Controlla c = new Controlla();
         c.start();
         java.awt.EventQueue.invokeLater(new Runnable() {
-           
-            public void run(){
+
+            public void run() {
                 new Frame().setVisible(true);
                 try {
                     c.join();
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                 
+
             }
         });
     }
 
     //Vlad: cambiato da private --> protected
-    protected ArrayList<Prodotto> LeggiDaFileProdotti(String percorso) throws ParseException {
+    public ArrayList<Prodotto> LeggiDaFileProdotti(String percorso) throws ParseException {
         BufferedReader br = null;
         ArrayList s = new ArrayList<Prodotto>();
         try {
@@ -619,13 +621,13 @@ public class Frame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "File " + percorso + " non trovato!");
         }
         String text = null;
-        
+
         try {
             String[] a;
             while ((text = br.readLine()) != null) {
                 a = text.split(";");
                 s.add(new Prodotto(a[0], a[1], a[2], a[3], a[4]));
-                
+
             }
         } catch (IOException ex) {
             Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
@@ -640,7 +642,6 @@ public class Frame extends javax.swing.JFrame {
         }
         return s;
     }
-
 
     private ArrayList<Ricetta> LeggiDaFileRicette(String percorso) {
         BufferedReader br = null;

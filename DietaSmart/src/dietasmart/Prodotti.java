@@ -13,18 +13,17 @@ import java.util.ArrayList;
  */
 public class Prodotti {
 
-    static Prodotti _instance = null;
+   
     ArrayList prodotti; //https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
 
-    static synchronized public Prodotti getInstance() {
-        if (_instance == null) {
-            _instance = new Prodotti();
-        }
-        return _instance;
-    }
+    
 
     Prodotti() {
         prodotti = new ArrayList<Prodotto>();
+    }
+
+    Prodotti(ArrayList<Prodotto> p) {
+       prodotti=p;
     }
 
     public void AddProduct(Prodotto p) {
