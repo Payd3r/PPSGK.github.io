@@ -265,7 +265,7 @@ public class Frame extends javax.swing.JFrame {
                         .addComponent(Cal, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                         .addComponent(Tempo, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -568,15 +568,27 @@ public class Frame extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         /* Create and display the form */
+        
+        
+        //INIZIALIZZAZIONE BOT
+        /*ApiContextInitializer.init();
+        TelegramBotsApi api = new TelegramBotsApi();
+        try {
+            api.registerBot(new Bot());
+        } catch (TelegramApiRequestException e) {
+            // gestione errore in registrazione
+        }*/
+        
         Arduino arduino=new Arduino();
         
         FileReader file=new FileReader("RicetteRealizzabili.txt");
         BufferedReader lettore=new BufferedReader(file);
         String riga=lettore.readLine();
         while(riga!=null){
-            arduino.serialWrite(riga);
+            arduino.serialWrite(riga+";");
             riga=lettore.readLine();
         }
+        arduino.serialWrite(".");
         file.close();
 
         

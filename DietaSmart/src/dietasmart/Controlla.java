@@ -25,6 +25,7 @@ public class Controlla extends Thread {
     
     @Override
     public void run() {
+<<<<<<< HEAD
         Arduino arduino = new Arduino();
         arduino.setBaudRate(9600);
         arduino.setPortDescription("COM1");//rivedere porta
@@ -81,6 +82,9 @@ public class Controlla extends Thread {
                 }
             }
         }
+=======
+        
+>>>>>>> b9607263c9bb449a6e9fe1d672f6fce47fc14ee8
     }
     }
 
