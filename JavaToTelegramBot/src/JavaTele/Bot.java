@@ -6,15 +6,14 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 import org.telegram.telegrambots.generics.LongPollingBot;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.logging.Level;
 
 import static org.telegram.telegrambots.logging.BotLogger.log;
 
 class Bot extends TelegramLongPollingBot {
-
-    boolean check = false;
-
-
 
         public void onUpdateReceived(Update update) {
             String msg = update.getMessage().getText();  //
@@ -31,7 +30,6 @@ class Bot extends TelegramLongPollingBot {
         }
 
 
-
     @Override
     public String getBotUsername() {
         return "AlertBot";
@@ -42,4 +40,7 @@ class Bot extends TelegramLongPollingBot {
     public String getBotToken() {
         return "1808508898:AAGbuwoN7OYhYFYJQ2la8vRKfdRHZio0OVo";
     } //Token di BOT
+
+
+
 }

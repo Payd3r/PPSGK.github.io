@@ -610,7 +610,8 @@ public class Frame extends javax.swing.JFrame {
         });
     }
 
-    private ArrayList<Prodotto> LeggiDaFileProdotti(String percorso) throws ParseException {
+    //Vlad: cambiato da private --> protected
+    protected ArrayList<Prodotto> LeggiDaFileProdotti(String percorso) throws ParseException {
         BufferedReader br = null;
         ArrayList s = new ArrayList<Prodotto>();
         try {
@@ -641,6 +642,7 @@ public class Frame extends javax.swing.JFrame {
         }
         return s;
     }
+
 
     private ArrayList<Ricetta> LeggiDaFileRicette(String percorso) {
         BufferedReader br = null;
