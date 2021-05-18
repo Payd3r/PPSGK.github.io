@@ -5,6 +5,7 @@
  */
 package dietasmart;
 
+import arduino.Arduino;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.io.*;
 import java.nio.file.Files;
@@ -21,8 +22,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import jssc.SerialPort;
-import jssc.SerialPortException;
+
 
 /**
  *
@@ -504,8 +504,6 @@ public class Frame extends javax.swing.JFrame {
             model.insertRow(model.getRowCount(), new Object[]{r.nome, r.preparazione, r.tempo, r.valoreEnergetico[0], r.valoreEnergetico[1], r.valoreEnergetico[2], r.necessario});
         }
     }//GEN-LAST:event_jPanel3ComponentShown
-
-    
     
     
     private void AggiungiRicettaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AggiungiRicettaActionPerformed
@@ -534,7 +532,7 @@ public class Frame extends javax.swing.JFrame {
 
     
     
-        private void scriviricette(String s) throws IOException{
+    private void scriviricette(String s) throws IOException{
         File f = new File("Ricette.txt");
         if (f.exists()) {
             FileOutputStream fos = new FileOutputStream("Ricette.txt", true);
@@ -563,49 +561,37 @@ public class Frame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[])throws IOException, SerialPortException  {
+    public static void main(String args[]) throws FileNotFoundException, IOException{
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //legge 
+        /* Create and display the form */
+        Arduino arduino=new Arduino();
         
         FileReader file=new FileReader("RicetteRealizzabili.txt");
         BufferedReader lettore=new BufferedReader(file);
         String riga=lettore.readLine();
         while(riga!=null){
-            System.out.println(riga);
+            arduino.serialWrite(riga);
             riga=lettore.readLine();
-            file.close();
         }
-    
+        file.close();
 
         
-      
-        
-        /* Create and display the form */
+        Controlla c=new Controlla();
+        c.start();
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+           
+            public void run(){
                 new Frame().setVisible(true);
+                try {
+                    c.join();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                 
             }
         });
     }
