@@ -13,17 +13,14 @@ import java.util.ArrayList;
  */
 public class Prodotti {
 
-   
     ArrayList prodotti; //https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
-
-    
 
     Prodotti() {
         prodotti = new ArrayList<Prodotto>();
     }
 
     Prodotti(ArrayList<Prodotto> p) {
-       prodotti=p;
+        prodotti = p;
     }
 
     public void AddProduct(Prodotto p) {

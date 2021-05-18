@@ -21,7 +21,7 @@ public class Ricette {
     }
 
     Ricette(ArrayList<Ricetta> r) {
-       ricette=r;
+        ricette = r;
     }
 
     public void setRicetta(Ricetta r) {
@@ -37,30 +37,23 @@ public class Ricette {
         }
     }
 
-    
-
     public ArrayList<Ricetta> trovaRealizzabili(ArrayList<Ricetta> a, ArrayList<Prodotto> b) {
-        int controllo=0;
+        int controllo = 0;
         ArrayList<Ricetta> realizzabili = new ArrayList<Ricetta>();
         String[] x;
         for (Ricetta tmp : a) {
             x = tmp.necessario.split(",");
             for (Prodotto temp : b) {
-                
                 for (int i = 0; i < x.length; i++) {
-                    if (x[0] == temp.nome){
+                    if (x[i].toUpperCase().equals(temp.nome.toUpperCase())) {
                         controllo++;
                     }
                 }
-                
-                
             }
-            if(controllo==x.length){
-                controllo=0;
+            if (controllo == x.length) {
+                controllo = 0;
                 realizzabili.add(tmp);
             }
-                
-           
         }
         return realizzabili;
     }
@@ -74,8 +67,7 @@ public class Ricette {
         }
     }
      */
-    
-    /*
+ /*
     public String visualizza() {
         String s = "";
         Ricetta r;

@@ -8,16 +8,9 @@ package dietasmart;
 import arduino.Arduino;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -25,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Mattia
+ * @author Payd3r,Shock03,Skin
  */
 public class Frame extends javax.swing.JFrame {
 
@@ -64,16 +57,10 @@ public class Frame extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         Nome = new javax.swing.JTextField();
         Preparazione = new javax.swing.JTextField();
-        Cal = new javax.swing.JTextField();
-        Pro = new javax.swing.JTextField();
         Tempo = new javax.swing.JTextField();
-        Gra = new javax.swing.JTextField();
         Ingredienti = new javax.swing.JTextField();
         AggiungiRicetta = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -205,15 +192,6 @@ public class Frame extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel9.setText("Tempo di Preparazione:");
 
-        jLabel10.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel10.setText("Calorie:");
-
-        jLabel11.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel11.setText("Proteine:");
-
-        jLabel12.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel12.setText("Grassi:");
-
         jLabel13.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel13.setText("Ingredienti:");
 
@@ -221,13 +199,7 @@ public class Frame extends javax.swing.JFrame {
 
         Preparazione.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
-        Cal.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-
-        Pro.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-
         Tempo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-
-        Gra.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
         Ingredienti.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
@@ -250,18 +222,6 @@ public class Frame extends javax.swing.JFrame {
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Ingredienti, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Gra, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Pro, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Cal, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
@@ -278,7 +238,7 @@ public class Frame extends javax.swing.JFrame {
                             .addComponent(Nome, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
                             .addComponent(Preparazione)))
                     .addComponent(AggiungiRicetta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(673, Short.MAX_VALUE))
+                .addContainerGap(678, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,25 +255,13 @@ public class Frame extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Tempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Cal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Pro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Gra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13)
                     .addComponent(Ingredienti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                .addGap(27, 27, 27)
                 .addComponent(AggiungiRicetta, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(251, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Aggiungi Ricetta", jPanel2);
@@ -356,7 +304,7 @@ public class Frame extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -392,15 +340,15 @@ public class Frame extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1123, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1134, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Visualizza Ricette", jPanel4);
@@ -442,7 +390,7 @@ public class Frame extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -452,7 +400,7 @@ public class Frame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1148, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -478,34 +426,20 @@ public class Frame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jPanel5ComponentShown
 
-    private void jPanel4ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel4ComponentShown
-        // TODO add your handling code here:
-        ArrayList<Ricetta> s = new ArrayList<Ricetta>();
-        s = LeggiDaFileRicette("Ricette.txt");
-
-        DefaultTableModel model1;
-        model1 = (DefaultTableModel) jTable2.getModel();
-        model1.setRowCount(0);
-        for (Ricetta r : s) {
-            model1.insertRow(model1.getRowCount(), new Object[]{r.nome, r.preparazione, r.tempo, r.valoreEnergetico[0], r.valoreEnergetico[1], r.valoreEnergetico[2], r.necessario});
-        }
-    }//GEN-LAST:event_jPanel4ComponentShown
-
     private void jPanel3ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel3ComponentShown
 
-       
         Ricette temp = new Ricette(LeggiDaFileRicette("Ricette.txt"));
         Ricette realizzabili = null;
         try {
-            realizzabili = new Ricette(temp.trovaRealizzabili(temp.ricette,LeggiDaFileProdotti("Articoli.txt") ));
+            realizzabili = new Ricette(temp.trovaRealizzabili(temp.ricette, LeggiDaFileProdotti("Articoli.txt")));
         } catch (ParseException ex) {
             Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
         }
         DefaultTableModel model;
         model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-        ArrayList <Ricetta> fantastica=new ArrayList<Ricetta>(realizzabili.ricette);
-        for (Ricetta r:fantastica ) {
+        ArrayList<Ricetta> fantastica = new ArrayList<Ricetta>(realizzabili.ricette);
+        for (Ricetta r : fantastica) {
             model.insertRow(model.getRowCount(), new Object[]{r.nome, r.preparazione, r.tempo, r.valoreEnergetico[0], r.valoreEnergetico[1], r.valoreEnergetico[2], r.necessario});
         }
     }//GEN-LAST:event_jPanel3ComponentShown
@@ -513,9 +447,14 @@ public class Frame extends javax.swing.JFrame {
 
     private void AggiungiRicettaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AggiungiRicettaActionPerformed
         // TODO add your handling code here:
-        String s = Nome.getText() + ";" + Preparazione.getText() + ";" + Tempo.getText() + ";" + Cal.getText() + ";" + Pro.getText() + ";" + Gra.getText() + ";" + Ingredienti.getText() + ";" + "\n";
+        Ricetta r = new Ricetta();
         try {
-            scriviricette(s);
+            r = new Ricetta(Nome.getText(), Preparazione.getText(), Tempo.getText(), Ingredienti.getText(), LeggiDaFileProdotti("Articoli.txt"));
+        } catch (ParseException ex) {
+            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            scriviricette(r.ToString());
         } catch (IOException ex) {
             Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -534,6 +473,18 @@ public class Frame extends javax.swing.JFrame {
         }
         clearArticolo();
     }//GEN-LAST:event_AggiungiProdottoActionPerformed
+
+    private void jPanel4ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel4ComponentShown
+        // TODO add your handling code here:
+        ArrayList<Ricetta> s = LeggiDaFileRicette("Ricette.txt");
+
+        DefaultTableModel model1;
+        model1 = (DefaultTableModel) jTable2.getModel();
+        model1.setRowCount(0);
+        for (Ricetta r : s) {
+            model1.insertRow(model1.getRowCount(), new Object[]{r.nome, r.preparazione, r.tempo, r.necessario});
+        }
+    }//GEN-LAST:event_jPanel4ComponentShown
 
     private void scriviricette(String s) throws IOException {
         File f = new File("Ricette.txt");
@@ -581,9 +532,10 @@ public class Frame extends javax.swing.JFrame {
             api.registerBot(new Bot());
         } catch (TelegramApiRequestException e) {
             // gestione errore in registrazione
-        }*/
+        }
         Arduino arduino = new Arduino();
-
+        arduino.setBaudRate(9600);
+        arduino.setPortDescription("COM1");//rivedere porta
         FileReader file = new FileReader("RicetteRealizzabili.txt");
         BufferedReader lettore = new BufferedReader(file);
         String riga = lettore.readLine();
@@ -593,9 +545,10 @@ public class Frame extends javax.swing.JFrame {
         }
         arduino.serialWrite(".");
         file.close();
-
+         */
         Controlla c = new Controlla();
         c.start();
+
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
@@ -627,7 +580,6 @@ public class Frame extends javax.swing.JFrame {
             while ((text = br.readLine()) != null) {
                 a = text.split(";");
                 s.add(new Prodotto(a[0], a[1], a[2], a[3], a[4]));
-
             }
         } catch (IOException ex) {
             Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
@@ -647,6 +599,12 @@ public class Frame extends javax.swing.JFrame {
         BufferedReader br = null;
         ArrayList s = new ArrayList<Ricetta>();
 
+        try {
+            br = new BufferedReader(new FileReader(percorso));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "File " + percorso + " non trovato!");
+        }
         String text = null;
         try {
             String[] a;
@@ -679,32 +637,23 @@ public class Frame extends javax.swing.JFrame {
         Nome.setText("");
         Preparazione.setText("");
         Tempo.setText("");
-        Gra.setText("");
-        Cal.setText("");
-        Pro.setText("");
         Ingredienti.setText("");
         Ingredienti.setText("");
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AggiungiProdotto;
     private javax.swing.JButton AggiungiRicetta;
-    private javax.swing.JTextField Cal;
     private javax.swing.JTextField Calorie;
     private com.toedter.calendar.JDateChooser Data;
-    private javax.swing.JTextField Gra;
     private javax.swing.JTextField Grassi;
     private javax.swing.JTextField Ingredienti;
     private javax.swing.JTextField Nome;
     private javax.swing.JTextField NomeArticolo;
     private javax.swing.JTextField Preparazione;
-    private javax.swing.JTextField Pro;
     private javax.swing.JTextField Proteine;
     private javax.swing.JTextField Tempo;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
