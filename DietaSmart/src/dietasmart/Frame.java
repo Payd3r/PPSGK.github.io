@@ -537,7 +537,7 @@ public class Frame extends javax.swing.JFrame {
             api.registerBot(new Bot());
         } catch (TelegramApiRequestException e) {
             // gestione errore in registrazione
-        }
+        }*/
         Arduino arduino = new Arduino();
         arduino.setBaudRate(9600);
         arduino.setPortDescription("COM1");//rivedere porta
@@ -550,7 +550,7 @@ public class Frame extends javax.swing.JFrame {
         }
         arduino.serialWrite(".");
         file.close();
-         */
+         
         Controlla c = new Controlla();
         c.start();
 
