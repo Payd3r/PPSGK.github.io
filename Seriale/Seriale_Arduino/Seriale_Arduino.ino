@@ -1,26 +1,70 @@
 #include <LiquidCrystal.h>
-
-// initialize the library by associating any needed LCD interface pin
-// with the arduino pin number it is connected to
-const int rs = 11;
-const int en = 10;
-const int d4 = 5;
-const int d5 = 4;
-const int d6 = 3;
-const int d7 = 2;
-LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+#define ptz A0
+#define btn 7
+// initialize the library with the numbers of the interface pins
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+char stopread=' ';
+String vettore[100];
+String s="";
+int numel=0;
 
 void setup() {
-  // set up the LCD's number of columns and rows:
   lcd.begin(16, 2);
-  // Print a message to the LCD.
-  lcd.print("Ciao Mondo!");
+  Serial.begin(9600);
+  pinMode(ptz,INPUT);
+  pinMode(btn,INPUT);  
+  for(int i=0;i<100;i++){
+  vettore[i]="";
+  }    
+}
+void loop() {
+
+  if(stopread==' '){
+   s=leggiFinoA(';');
+    if(s!="."){
+     vettore[numel]=s;
+     numel++;
+    }
+  } 
+  
+  if(stopread=='.')
+  {
+    int pot=analogRead(ptz);    
+  	int nuovoval=1024/numel;    
+    int pos=pot/nuovoval;
+
+    delay(500);
+    lcd.clear();
+    lcd.setCursor(0,0);
+	lcd.print(vettore[pos]); 
+    if(digitalRead(btn)==HIGH){
+    Serial.println(vettore[pos]);
+    }
+  } 
+  
+  
+}
+String leggiFinoA(char terminatore)
+{
+  String visualizza="";
+  while(true)
+  {
+  if(Serial.available()>0)
+  {
+   char c=Serial.read();
+    if(c==terminatore){
+      return visualizza;
+    }
+    else if(c=='.'){
+      stopread=c;
+      return ".";
+    }
+    else{
+    visualizza+=c;
+    }
+  } 
+
+  }
 }
 
-void loop() {
-  // set the cursor to column 0, line 1
-  // (note: line 1 is the second row, since counting begins with 0):
-  lcd.setCursor(0, 1);
-  // print the number of seconds since reset:
-  lcd.print(millis() / 1000);
-}
+ 
