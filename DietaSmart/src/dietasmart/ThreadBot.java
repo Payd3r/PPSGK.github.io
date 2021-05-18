@@ -6,8 +6,6 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import jersey.repackaged.org.objectweb.asm.TypeReference;
-import org.telegram.telegrambots.api.objects.Update;
 
 public class ThreadBot extends Thread{
 
