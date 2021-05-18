@@ -1,4 +1,4 @@
-package dietasmart;
+/*package dietasmart;
 
 
 import org.telegram.telegrambots.api.methods.send.SendMessage;
@@ -129,7 +129,7 @@ class Bot extends TelegramLongPollingBot {
         } catch (TelegramApiException e) {
 
         }
-    }*/
+    }
 
     //Dati di BOT
     @Override
@@ -137,12 +137,9 @@ class Bot extends TelegramLongPollingBot {
         return "AlertBot";
     } //Nome di BOT
 
-
     @Override
     public String getBotToken() {
         return "1808508898:AAGbuwoN7OYhYFYJQ2la8vRKfdRHZio0OVo";
     } //Token di BOT
 
-
-
-}
+}*/
