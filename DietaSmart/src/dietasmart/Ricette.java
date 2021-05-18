@@ -98,8 +98,8 @@ public class Ricette {
         return trovata;
     }
 
-    public String TrovaRicettaProteica() {
-        String str = "";
+    public Ricetta TrovaRicettaProteica() {
+        
         Ricetta temp1, temp2;
         Ricetta trovata = new Ricetta();
         for (int i = 0; i < ricette.size() - 1; i++) {
@@ -113,12 +113,12 @@ public class Ricette {
                 }
             }
         }
-        str = trovata.nome;
-        return str;
+        
+        return trovata;
     }
 
-    public String TrovaRicettaSalutare() {
-        String str = "";
+    public Ricetta TrovaRicettaSalutare() {
+       
         Ricetta temp1, temp2;
         Ricetta trovata = new Ricetta();
         for (int i = 0; i < ricette.size() - 1; i++) {
@@ -132,12 +132,12 @@ public class Ricette {
                 }
             }
         }
-        str = trovata.nome;
-        return str;
+       
+        return trovata;
     }
 
-    public String TrovaRicettaFacile() {
-        String str = "";
+    public Ricetta TrovaRicettaFacile() {
+       
         Ricetta temp1, temp2;
         Ricetta trovata = new Ricetta();
         for (int i = 0; i < ricette.size() - 1; i++) {
@@ -151,7 +151,7 @@ public class Ricette {
                 }
             }
         }
-        str = trovata.nome;
-        return str;
+        
+        return trovata;
     }
 }

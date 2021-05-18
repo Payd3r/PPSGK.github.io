@@ -13,7 +13,12 @@ import java.util.ArrayList;
  */
 public class Prodotti {
 
+<<<<<<< Updated upstream
     ArrayList prodotti; //https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
+=======
+   
+    ArrayList prodotti;
+>>>>>>> Stashed changes
 
     Prodotti() {
         prodotti = new ArrayList<Prodotto>();
