@@ -6,22 +6,24 @@
 package seriale;
 
 import arduino.Arduino;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  *
  * @author galeg
  */
 public class Seriale {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-       Arduino sp=new Arduino();
+    
+    public static void main(String[] args)throws IOException {
+      Arduino sp=new Arduino();
        sp.setPortDescription("COM4");
        sp.setBaudRate(9600);
        sp.serialRead();//legge
-       sp.serialWrite("Ciao");//scrive
+      sp.serialWrite("Ciao");//scrive
+        
+    
        
     }
     

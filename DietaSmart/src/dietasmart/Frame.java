@@ -21,6 +21,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import jssc.SerialPort;
+import jssc.SerialPortException;
 
 /**
  *
@@ -562,7 +564,7 @@ public class Frame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])throws IOException, SerialPortException  {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -586,7 +588,27 @@ public class Frame extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //legge 
+        
+        FileReader file=new FileReader("RicetteRealizzabili.txt");
+        BufferedReader lettore=new BufferedReader(file);
+        String riga=lettore.readLine();
+        while(riga!=null){
+            System.out.println(riga);
+            riga=lettore.readLine();
+            file.close();
+        }
+        SerialPort serialPort = new SerialPort("/dev/ttyUSB0");// For windows "COMX" (e.g : "COM1") should works
+            if (serialPort.openPort()) {
+                serialPort.setParams(SerialPort.BAUDRATE_9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_ODD);
+        byte[] buffer = serialPort.readBytes(1);// Read one byte
+        String str = new String(buffer);
+        serialPort.closePort();
+}
 
+        
+      
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

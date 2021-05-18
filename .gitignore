@@ -11,3 +11,4 @@ DietaSmart/manifest.mf
 /DietaSmart/build/
 jcalendar-1.4/src/com/toedter/calendar/jcalendar_th_TH_TH.properties
 *.properties
+/Seriale/build/
